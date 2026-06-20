@@ -43,3 +43,24 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# --- ADDED FOR PUBLIC SECURITY ---
+
+# Android App Signing Keys
+**/android/key.properties
+*.jks
+*.keystore
+
+# iOS Certificates
+*.p8
+*.p12
+*.mobileprovision
+
+# Secret Environment Variables
+.env
+.env.*
+
+# Firebase native configuration files (just in case you add them later)
+google-services.json
+GoogleService-Info.plist
+firebase-adminsdk-*.json
