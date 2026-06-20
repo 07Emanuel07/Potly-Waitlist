@@ -1,3 +1,3 @@
-# waiting_list
+# Potly Waitlist
 
-Potly Waitlist
+Join The Waitlist & Secure a Spot!
