@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:waiting_list/waitlist_input.dart';
 
+import 'l10n/app_localizations.dart';
+import 'main.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -60,18 +63,38 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         actions: [
+          // Language Switcher (more compact)
+          TextButton(
+            style: TextButton.styleFrom(minimumSize: Size.zero, padding: const EdgeInsets.symmetric(horizontal: 8)),
+            onPressed: () => PotlyWaitlistApp.of(context)?.setLocale(const Locale('en')),
+            child: const Text('EN', style: TextStyle(color: Colors.white, fontSize: 13)),
+          ),
+          const Center(child: Text('|', style: TextStyle(color: Colors.white38))),
+          TextButton(
+            style: TextButton.styleFrom(minimumSize: Size.zero, padding: const EdgeInsets.symmetric(horizontal: 8)),
+            onPressed: () => PotlyWaitlistApp.of(context)?.setLocale(const Locale('de')),
+            child: const Text('DE', style: TextStyle(color: Colors.white, fontSize: 13)),
+          ),
+          const SizedBox(width: 8),
+          // Join Waitlist Button (Responsive padding)
           Padding(
-            padding: const EdgeInsets.only(right: 20.0),
+            padding: EdgeInsets.only(right: isDesktop ? 20.0 : 10.0),
             child: Center(
               child: ElevatedButton(
                 onPressed: _scrollToTop,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor,
-                  foregroundColor: Colors.black, // High contrast text on neon
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+                  foregroundColor: Colors.black,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: isDesktop ? 24 : 12,
+                      vertical: isDesktop ? 18 : 12
+                  ),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
-                child: const Text('Join Waitlist', style: TextStyle(fontWeight: FontWeight.bold)),
+                child: Text(
+                  AppLocalizations.of(context)!.joinWaitlist,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: isDesktop ? 16 : 12),
+                ),
               ),
             ),
           )
@@ -98,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
       crossAxisAlignment: isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       children: [
         Text(
-          'GROUP SAVINGS,\nSOLVED.',
+          AppLocalizations.of(context)!.heroTitle,
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: TextStyle(
             fontSize: isDesktop ? 64 : 40,
@@ -109,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         const SizedBox(height: 20),
         Text(
-          'Ditch messy WhatsApp chats.\nGet clear automated payouts.',
+          AppLocalizations.of(context)!.heroSubtitle,
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: TextStyle(
             fontSize: isDesktop ? 24 : 18,
@@ -120,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
         const WaitlistInput(),
         const SizedBox(height: 15),
         Text(
-          '🎉 Join the waitlist today and get your first full savings cycle entirely free.',
+          AppLocalizations.of(context)!.waitlistOffer,
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: const TextStyle(fontSize: 14, color: Colors.white70, fontStyle: FontStyle.italic),
         ),
@@ -133,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF13F3C6).withOpacity(0.2),
+            color: const Color(0xFF13F3C6).withValues(alpha:  0.2),
             blurRadius: 50,
             spreadRadius: 10,
           )
@@ -180,32 +203,32 @@ class _HomeScreenState extends State<HomeScreen> {
         _buildFeatureRow(
           context: context,
           isDesktop: isDesktop,
-          title: 'A Single Source of Truth',
-          description: 'Ditch the messy chats. Potly acts as your group\'s digital ledger, making tracking contributions effortless and transparent for everyone.',
-          imagePath: 'assets/1_Potly_Hook .png',
+          title: AppLocalizations.of(context)!.feature1Title,
+          description: AppLocalizations.of(context)!.feature1Desc,
+          imagePath: 'assets/1_Potly_Hook.png',
           isReversed: false,
         ),
         _buildFeatureRow(
           context: context,
           isDesktop: isDesktop,
-          title: 'The Math is on Us',
-          description: 'Automated tracking, instant reminders, and clear payout dates. Never manually calculate who owes what ever again.',
+          title: AppLocalizations.of(context)!.feature2Title,
+          description: AppLocalizations.of(context)!.feature2Desc,
           imagePath: 'assets/2_Potly_Math.png',
           isReversed: true,
         ),
         _buildFeatureRow(
           context: context,
           isDesktop: isDesktop,
-          title: 'Stress-Free Payouts',
-          description: 'Celebrate your payout! Enjoy seamless winner selection and turn management without the typical administrative headaches.',
+          title: AppLocalizations.of(context)!.feature3Title,
+          description: AppLocalizations.of(context)!.feature3Desc,
           imagePath: 'assets/3_Potly_Reward.png',
           isReversed: false,
         ),
         _buildFeatureRow(
           context: context,
           isDesktop: isDesktop,
-          title: 'Built on Trust',
-          description: 'Strict digital rules keep your savings circle safe. Deadlines are final, and automatic suspensions ensure fair play for everyone involved.',
+          title: AppLocalizations.of(context)!.feature4Title,
+          description: AppLocalizations.of(context)!.feature4Desc,
           imagePath: 'assets/4_Potly_Trust_v3.png',
           isReversed: true,
         ),
@@ -294,13 +317,13 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: EdgeInsets.symmetric(horizontal: isDesktop ? 100 : 20, vertical: 60),
       child: Column(
         children: [
-          const Text(
-            'Claim Your Free Cycle & Secure Your Spot.',
+           Text(
+            AppLocalizations.of(context)!.footerTitle,
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Your first cycle is completely free. After that, Potly costs just €1/month or €10/year.\nThe price of a coffee to secure your group\'s financial peace of mind.',
+           Text(
+            AppLocalizations.of(context)!.footerDesc,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16, color: Colors.white70, height: 1.5),
           ),
@@ -311,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SizedBox(height: 40),
           const Text(
-            '© 2026 Potly. All rights reserved.',
+            '© 2026 Potly. Emanuel Biruk Seifegebreal. All rights reserved.',
             style: TextStyle(color: Colors.white38, fontSize: 12),
           )
         ],

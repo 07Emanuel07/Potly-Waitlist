@@ -3,6 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 import 'home_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'l10n/app_localizations.dart';
+
 
 void main() async {
   // Ensure Flutter bindings are initialized before Firebase
@@ -19,12 +22,40 @@ void main() async {
   runApp(const PotlyWaitlistApp());
 }
 
-class PotlyWaitlistApp extends StatelessWidget {
+class PotlyWaitlistApp extends StatefulWidget {
   const PotlyWaitlistApp({super.key});
+
+  // This helper method allows children to find the state and call setLocale
+  static _PotlyWaitlistAppState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_PotlyWaitlistAppState>();
+
+  @override
+  State<PotlyWaitlistApp> createState() => _PotlyWaitlistAppState();
+}
+
+class _PotlyWaitlistAppState extends State<PotlyWaitlistApp> {
+  Locale? _locale;
+
+  void setLocale(Locale value) {
+    setState(() {
+      _locale = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: _locale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('de'),
+      ],
       title: 'Potly - Saving Circles',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
