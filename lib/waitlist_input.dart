@@ -60,6 +60,8 @@ class _WaitlistInputState extends State<WaitlistInput> {
       }
 
     } on FirebaseException catch (e) {
+      print('🔥 FIREBASE ERROR CODE: ${e.code}');
+      print('🔥 FIREBASE ERROR MESSAGE: ${e.message}');
       // Catch the permission-denied error triggered by our rules
       if (e.code == 'permission-denied') {
         if (mounted) {
