@@ -1,3 +1,3 @@
 # waiting_list
 
-Potly WaitList
+Potly Waitlist
