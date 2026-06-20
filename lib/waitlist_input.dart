@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class WaitlistInput extends StatefulWidget {
   const WaitlistInput({super.key});
@@ -9,17 +9,12 @@ class WaitlistInput extends StatefulWidget {
 }
 
 class _WaitlistInputState extends State<WaitlistInput> {
-  // Controller to read the text typed into the field
   final TextEditingController _emailController = TextEditingController();
-
-  // Variable to track if we are currently saving to the database
   bool _isLoading = false;
 
-  // The function that runs when the button is pressed
   Future<void> _joinWaitlist() async {
     final email = _emailController.text.trim();
 
-    // 1. Basic Validation: Ensure it looks like an email
     if (email.isEmpty || !email.contains('@') || !email.contains('.')) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter a valid email address.')),
@@ -27,24 +22,19 @@ class _WaitlistInputState extends State<WaitlistInput> {
       return;
     }
 
-    // 2. Start Loading
     setState(() {
       _isLoading = true;
     });
 
     try {
       final normalizedEmail = email.toLowerCase();
-
-      // 1. Reference the specific document using the email as the ID
       final docRef = FirebaseFirestore.instance
           .collection('waitlist_emails')
           .doc(normalizedEmail);
 
-      // 2. Fetch the document to check if it already exists
       final docSnapshot = await docRef.get();
 
       if (docSnapshot.exists) {
-        // User is already on the list!
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -54,10 +44,9 @@ class _WaitlistInputState extends State<WaitlistInput> {
           );
           _emailController.clear();
         }
-        return; // Stop execution here
+        return;
       }
 
-      // 3. If it doesn't exist, save it securely
       await docRef.set({
         'email': normalizedEmail,
         'timestamp': FieldValue.serverTimestamp(),
@@ -74,6 +63,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
       }
     } catch (e) {
       if (mounted) {
+        print('Error joining waitlist: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Something went wrong. Please try again.'),
@@ -101,7 +91,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
     final bool isDesktop = MediaQuery.of(context).size.width > 600;
 
     Widget inputField = TextField(
-      controller: _emailController, // Attach the controller here
+      controller: _emailController,
       style: const TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
@@ -113,11 +103,11 @@ class _WaitlistInputState extends State<WaitlistInput> {
     );
 
     Widget button = ElevatedButton(
-      onPressed: _isLoading ? null : _joinWaitlist, // Disable button if loading
+      onPressed: _isLoading ? null : _joinWaitlist,
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.black,
-        disabledBackgroundColor: Colors.grey[800], // Color when disabled
+        disabledBackgroundColor: Colors.grey[800],
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -136,7 +126,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
     return Container(
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.white24),
       ),
