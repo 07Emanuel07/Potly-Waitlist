@@ -33,20 +33,36 @@ class _WaitlistInputState extends State<WaitlistInput> {
     });
 
     try {
-      // Save to Firestore
-      // 1. Convert email to lowercase so 'Test@Test.com' and 'test@test.com' don't count twice
       final normalizedEmail = email.toLowerCase();
 
-      // 2. Use .doc(normalizedEmail).set() instead of .add()
-      await FirebaseFirestore.instance
+      // 1. Reference the specific document using the email as the ID
+      final docRef = FirebaseFirestore.instance
           .collection('waitlist_emails')
-          .doc(normalizedEmail)
-          .set({
+          .doc(normalizedEmail);
+
+      // 2. Fetch the document to check if it already exists
+      final docSnapshot = await docRef.get();
+
+      if (docSnapshot.exists) {
+        // User is already on the list!
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('You are already on the waitlist! 😎'),
+              backgroundColor: Colors.orange,
+            ),
+          );
+          _emailController.clear();
+        }
+        return; // Stop execution here
+      }
+
+      // 3. If it doesn't exist, save it securely
+      await docRef.set({
         'email': normalizedEmail,
         'timestamp': FieldValue.serverTimestamp(),
       });
 
-      // 4. Success handling
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -54,10 +70,9 @@ class _WaitlistInputState extends State<WaitlistInput> {
             backgroundColor: Colors.green,
           ),
         );
-        _emailController.clear(); // Clear the input field
+        _emailController.clear();
       }
     } catch (e) {
-      // 5. Error handling
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -67,7 +82,6 @@ class _WaitlistInputState extends State<WaitlistInput> {
         );
       }
     } finally {
-      // 6. Stop Loading
       if (mounted) {
         setState(() {
           _isLoading = false;

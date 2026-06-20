@@ -13,7 +13,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate(
-    webProvider: ReCaptchaEnterpriseProvider('6LevJyotAAAAAHMevD9bHqZBMhcn4CkpyK8Y0rUM'),
+    providerWeb: ReCaptchaEnterpriseProvider('6LevJyotAAAAAHMevD9bHqZBMhcn4CkpyK8Y0rUM'),
   );
 
   runApp(const PotlyWaitlistApp());
