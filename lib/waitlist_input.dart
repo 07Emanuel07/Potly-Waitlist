@@ -78,6 +78,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
         });
       }
     }
+
   }
 
   @override
