@@ -33,11 +33,17 @@ class _WaitlistInputState extends State<WaitlistInput> {
     });
 
     try {
-      // 3. Save to Firestore
-      // This creates a collection called 'waitlist_emails' and adds a new document
-      await FirebaseFirestore.instance.collection('waitlist_emails').add({
-        'email': email,
-        'timestamp': FieldValue.serverTimestamp(), // Records exactly when they joined
+      // Save to Firestore
+      // 1. Convert email to lowercase so 'Test@Test.com' and 'test@test.com' don't count twice
+      final normalizedEmail = email.toLowerCase();
+
+      // 2. Use .doc(normalizedEmail).set() instead of .add()
+      await FirebaseFirestore.instance
+          .collection('waitlist_emails')
+          .doc(normalizedEmail)
+          .set({
+        'email': normalizedEmail,
+        'timestamp': FieldValue.serverTimestamp(),
       });
 
       // 4. Success handling
