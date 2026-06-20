@@ -30,6 +30,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successJoined => 'Success! You are on the list. 🎉';
 
   @override
+  String get phoneHint => 'Phone number (optional)';
+
+  @override
   String get heroSubtitle =>
       'Ditch messy WhatsApp chats.\nGet clear automated payouts.';
 

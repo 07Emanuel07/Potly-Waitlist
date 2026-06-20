@@ -140,6 +140,12 @@ abstract class AppLocalizations {
   /// **'Success! You are on the list. 🎉'**
   String get successJoined;
 
+  /// No description provided for @phoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number (optional)'**
+  String get phoneHint;
+
   /// No description provided for @heroSubtitle.
   ///
   /// In en, this message translates to:

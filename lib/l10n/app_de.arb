@@ -5,7 +5,7 @@
     "errorAlreadyOnWaitlist": "Sie stehen bereits auf der Warteliste! 😎",
     "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     "successJoined": "Erfolg! Sie sind auf der Liste. 🎉",
-
+"phoneHint": "Telefonnummer (optional)",
   "heroTitle": "GRUPPENSPAREN,\nGELÖST.",
   "heroSubtitle": "Vergessen Sie unübersichtliche WhatsApp-Chats.\nErhalten Sie klare, automatisierte Auszahlungen.",
   "waitlistOffer": "🎉 Melden Sie sich noch heute für die Warteliste an und erhalten Sie Ihren ersten Sparzyklus völlig kostenlos.",

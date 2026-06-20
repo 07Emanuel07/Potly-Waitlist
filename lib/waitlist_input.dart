@@ -12,10 +12,12 @@ class WaitlistInput extends StatefulWidget {
 
 class _WaitlistInputState extends State<WaitlistInput> {
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController(); // Added phone controller
   bool _isLoading = false;
 
   Future<void> _joinWaitlist() async {
     final email = _emailController.text.trim();
+    final phone = _phoneController.text.trim(); // Capture phone text
 
     if (email.isEmpty || !email.contains('@') || !email.contains('.')) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -45,14 +47,23 @@ class _WaitlistInputState extends State<WaitlistInput> {
             ),
           );
           _emailController.clear();
+          _phoneController.clear(); // Clear on early exit
         }
         return;
       }
 
-      await docRef.set({
+      // Create a payload map to save to Firestore
+      Map<String, dynamic> dataToSave = {
         'email': normalizedEmail,
         'timestamp': FieldValue.serverTimestamp(),
-      });
+      };
+
+      // Only add the phone number to the document if the user provided one
+      if (phone.isNotEmpty) {
+        dataToSave['phone'] = phone;
+      }
+
+      await docRef.set(dataToSave);
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -62,6 +73,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
           ),
         );
         _emailController.clear();
+        _phoneController.clear(); // Clear on success
       }
     } catch (e) {
       if (mounted) {
@@ -80,12 +92,12 @@ class _WaitlistInputState extends State<WaitlistInput> {
         });
       }
     }
-
   }
 
   @override
   void dispose() {
     _emailController.dispose();
+    _phoneController.dispose(); // Dispose to prevent memory leaks
     super.dispose();
   }
 
@@ -93,12 +105,25 @@ class _WaitlistInputState extends State<WaitlistInput> {
   Widget build(BuildContext context) {
     final bool isDesktop = MediaQuery.of(context).size.width > 600;
 
-    Widget inputField = TextField(
+    Widget emailField = TextField(
       controller: _emailController,
       style: const TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         hintText: AppLocalizations.of(context)!.emailHint,
+        hintStyle: const TextStyle(color: Colors.white54),
+        border: InputBorder.none,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      ),
+    );
+
+    // New Phone Input Field
+    Widget phoneField = TextField(
+      controller: _phoneController,
+      style: const TextStyle(color: Colors.white),
+      keyboardType: TextInputType.phone, // Triggers number pad on mobile
+      decoration: InputDecoration(
+        hintText: AppLocalizations.of(context)!.phoneHint,
         hintStyle: const TextStyle(color: Colors.white54),
         border: InputBorder.none,
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -120,9 +145,9 @@ class _WaitlistInputState extends State<WaitlistInput> {
         width: 20,
         child: CircularProgressIndicator(color: Colors.black, strokeWidth: 2),
       )
-          :  Text(
+          : Text(
         AppLocalizations.of(context)!.joinWaitlist,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );
 
@@ -136,7 +161,9 @@ class _WaitlistInputState extends State<WaitlistInput> {
       child: isDesktop
           ? Row(
         children: [
-          Expanded(child: inputField),
+          Expanded(flex: 3, child: emailField),
+          Container(width: 1, height: 30, color: Colors.white24), // Subtle vertical divider
+          Expanded(flex: 2, child: phoneField),
           const SizedBox(width: 10),
           button,
         ],
@@ -144,7 +171,9 @@ class _WaitlistInputState extends State<WaitlistInput> {
           : Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          inputField,
+          emailField,
+          const Divider(color: Colors.white24, height: 1), // Subtle horizontal divider
+          phoneField,
           const SizedBox(height: 10),
           button,
         ],
