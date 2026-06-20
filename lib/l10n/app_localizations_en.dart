@@ -15,6 +15,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get heroTitle => 'GROUP SAVINGS,\nSOLVED.';
 
   @override
+  String get emailHint => 'Enter your email address';
+
+  @override
+  String get errorInvalidEmail => 'Please enter a valid email address.';
+
+  @override
+  String get errorAlreadyOnWaitlist => 'You are already on the waitlist! 😎';
+
+  @override
+  String get errorGeneric => 'Something went wrong. Please try again.';
+
+  @override
+  String get successJoined => 'Success! You are on the list. 🎉';
+
+  @override
   String get heroSubtitle =>
       'Ditch messy WhatsApp chats.\nGet clear automated payouts.';
 

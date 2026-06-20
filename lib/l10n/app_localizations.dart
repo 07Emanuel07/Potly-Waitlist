@@ -110,6 +110,36 @@ abstract class AppLocalizations {
   /// **'GROUP SAVINGS,\nSOLVED.'**
   String get heroTitle;
 
+  /// No description provided for @emailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address'**
+  String get emailHint;
+
+  /// No description provided for @errorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address.'**
+  String get errorInvalidEmail;
+
+  /// No description provided for @errorAlreadyOnWaitlist.
+  ///
+  /// In en, this message translates to:
+  /// **'You are already on the waitlist! 😎'**
+  String get errorAlreadyOnWaitlist;
+
+  /// No description provided for @errorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get errorGeneric;
+
+  /// No description provided for @successJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'Success! You are on the list. 🎉'**
+  String get successJoined;
+
   /// No description provided for @heroSubtitle.
   ///
   /// In en, this message translates to:

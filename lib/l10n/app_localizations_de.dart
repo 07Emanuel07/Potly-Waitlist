@@ -15,6 +15,24 @@ class AppLocalizationsDe extends AppLocalizations {
   String get heroTitle => 'GRUPPENSPAREN,\nGELÖST.';
 
   @override
+  String get emailHint => 'Geben Sie Ihre E-Mail-Adresse ein';
+
+  @override
+  String get errorInvalidEmail =>
+      'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+
+  @override
+  String get errorAlreadyOnWaitlist =>
+      'Sie stehen bereits auf der Warteliste! 😎';
+
+  @override
+  String get errorGeneric =>
+      'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
+
+  @override
+  String get successJoined => 'Erfolg! Sie sind auf der Liste. 🎉';
+
+  @override
   String get heroSubtitle =>
       'Vergessen Sie unübersichtliche WhatsApp-Chats.\nErhalten Sie klare, automatisierte Auszahlungen.';
 

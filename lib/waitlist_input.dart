@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'l10n/app_localizations.dart';
+
 class WaitlistInput extends StatefulWidget {
   const WaitlistInput({super.key});
 
@@ -17,7 +19,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
 
     if (email.isEmpty || !email.contains('@') || !email.contains('.')) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a valid email address.')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.errorInvalidEmail)),
       );
       return;
     }
@@ -37,8 +39,8 @@ class _WaitlistInputState extends State<WaitlistInput> {
       if (docSnapshot.exists) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('You are already on the waitlist! 😎'),
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.errorAlreadyOnWaitlist),
               backgroundColor: Colors.orange,
             ),
           );
@@ -54,8 +56,8 @@ class _WaitlistInputState extends State<WaitlistInput> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Success! You are on the list. 🎉'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.successJoined),
             backgroundColor: Colors.green,
           ),
         );
@@ -65,8 +67,8 @@ class _WaitlistInputState extends State<WaitlistInput> {
       if (mounted) {
         print('Error joining waitlist: $e');
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Something went wrong. Please try again.'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.errorGeneric),
             backgroundColor: Colors.red,
           ),
         );
@@ -95,11 +97,11 @@ class _WaitlistInputState extends State<WaitlistInput> {
       controller: _emailController,
       style: const TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-        hintText: 'Enter your email address',
-        hintStyle: TextStyle(color: Colors.white54),
+      decoration: InputDecoration(
+        hintText: AppLocalizations.of(context)!.emailHint,
+        hintStyle: const TextStyle(color: Colors.white54),
         border: InputBorder.none,
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       ),
     );
 
@@ -118,8 +120,8 @@ class _WaitlistInputState extends State<WaitlistInput> {
         width: 20,
         child: CircularProgressIndicator(color: Colors.black, strokeWidth: 2),
       )
-          : const Text(
-        'Join Waitlist',
+          :  Text(
+        AppLocalizations.of(context)!.joinWaitlist,
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );

@@ -1,5 +1,11 @@
 {
   "joinWaitlist": "Join Waitlist","heroTitle": "GROUP SAVINGS,\nSOLVED.",
+  "emailHint": "Enter your email address",
+   "errorInvalidEmail": "Please enter a valid email address.",
+    "errorAlreadyOnWaitlist": "You are already on the waitlist! 😎",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "successJoined": "Success! You are on the list. 🎉",
+
   "heroSubtitle": "Ditch messy WhatsApp chats.\nGet clear automated payouts.",
   "waitlistOffer": "🎉 Join the waitlist today and get your first full savings cycle entirely free.",
   "feature1Title": "A Single Source of Truth",
