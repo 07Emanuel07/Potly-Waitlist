@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
                 'assets/Potly_App_Icon.png',
-                height: 50,
-                width: 50,
+                height: 40,
+                width: 40,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.account_balance_wallet, size: 50, color: Color(0xFF13F3C6)),
               ),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text(
               'POTLY',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 2.0,
                 color: Colors.white,
