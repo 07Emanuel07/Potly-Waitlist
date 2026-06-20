@@ -36,44 +36,44 @@ class _WaitlistInputState extends State<WaitlistInput> {
           .collection('waitlist_emails')
           .doc(normalizedEmail);
 
-      final docSnapshot = await docRef.get();
+      // REMOVED: await docRef.get() check
 
-      if (docSnapshot.exists) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(AppLocalizations.of(context)!.errorAlreadyOnWaitlist),
-              backgroundColor: Colors.orange,
-            ),
-          );
-          _emailController.clear();
-          _phoneController.clear(); // Clear on early exit
-        }
-        return;
-      }
-
-      // Create a payload map to save to Firestore
       Map<String, dynamic> dataToSave = {
         'email': normalizedEmail,
         'timestamp': FieldValue.serverTimestamp(),
       };
 
-      // Only add the phone number to the document if the user provided one
       if (phone.isNotEmpty) {
         dataToSave['phone'] = phone;
       }
 
+      // Try to create the document
       await docRef.set(dataToSave);
 
+      // If it succeeds, they are newly added
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context)!.successJoined),
-            backgroundColor: Colors.green,
-          ),
+          SnackBar(content: Text(AppLocalizations.of(context)!.successJoined), backgroundColor: Colors.green),
         );
         _emailController.clear();
-        _phoneController.clear(); // Clear on success
+        _phoneController.clear();
+      }
+
+    } on FirebaseException catch (e) {
+      // Catch the permission-denied error triggered by our rules
+      if (e.code == 'permission-denied') {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context)!.errorAlreadyOnWaitlist), backgroundColor: Colors.orange),
+          );
+        }
+      } else {
+        // Handle other Firebase errors
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context)!.errorGeneric), backgroundColor: Colors.red),
+          );
+        }
       }
     } catch (e) {
       if (mounted) {
