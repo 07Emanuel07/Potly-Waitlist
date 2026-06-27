@@ -22,7 +22,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorAlreadyOnWaitlist =>
-      'You\'re already on the waitlist! (Made a typo? Refresh the page to try again) 😎';
+      'You\'re already on the waitlist! (Made a typo? Just try again later) 😎';
 
   @override
   String get errorGeneric => 'Something went wrong. Please try again.';

@@ -125,7 +125,7 @@ abstract class AppLocalizations {
   /// No description provided for @errorAlreadyOnWaitlist.
   ///
   /// In en, this message translates to:
-  /// **'You\'re already on the waitlist! (Made a typo? Refresh the page to try again) 😎'**
+  /// **'You\'re already on the waitlist! (Made a typo? Just try again later) 😎'**
   String get errorAlreadyOnWaitlist;
 
   /// No description provided for @errorGeneric.

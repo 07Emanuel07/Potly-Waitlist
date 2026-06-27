@@ -2,7 +2,7 @@
   "joinWaitlist": "Warteliste beitreten",
   "emailHint": "Geben Sie Ihre E-Mail-Adresse ein",
   "errorInvalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-    "errorAlreadyOnWaitlist": "Du stehst bereits auf der Warteliste! (Tippfehler? Lade die Seite neu, um es erneut zu versuchen) 😎",
+    "errorAlreadyOnWaitlist": "Du stehst bereits auf der Warteliste! (Vertippt? Versuch es einfach später erneut) 😎",
     "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     "successJoined": "Erfolg! Sie sind auf der Liste. 🎉",
 "phoneHint": "Telefonnummer (optional)",
