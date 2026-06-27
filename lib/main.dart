@@ -16,11 +16,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  if (kReleaseMode) {
-    await FirebaseAppCheck.instance.activate(
-      providerWeb: ReCaptchaEnterpriseProvider('6LevJyotAAAAAHMevD9bHqZBMhcn4CkpyK8Y0rUM'),
-    );
-  }
+
+  await FirebaseAppCheck.instance.activate(
+    providerWeb: ReCaptchaEnterpriseProvider('6LevJyotAAAAAHMevD9bHqZBMhcn4CkpyK8Y0rUM'),
+  );
+
 
   runApp(const PotlyWaitlistApp());
 }
