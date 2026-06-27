@@ -2,7 +2,7 @@
   "joinWaitlist": "Join Waitlist","heroTitle": "GROUP SAVINGS,\nSOLVED.",
   "emailHint": "Enter your email address",
    "errorInvalidEmail": "Please enter a valid email address.",
-    "errorAlreadyOnWaitlist": "You are already on the waitlist! 😎",
+    "errorAlreadyOnWaitlist": "You're already on the waitlist! (Made a typo? Refresh the page to try again) 😎",
     "errorGeneric": "Something went wrong. Please try again.",
     "successJoined": "Success! You are on the list. 🎉",
     "phoneHint": "Phone number (optional)",

@@ -21,7 +21,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorInvalidEmail => 'Please enter a valid email address.';
 
   @override
-  String get errorAlreadyOnWaitlist => 'You are already on the waitlist! 😎';
+  String get errorAlreadyOnWaitlist =>
+      'You\'re already on the waitlist! (Made a typo? Refresh the page to try again) 😎';
 
   @override
   String get errorGeneric => 'Something went wrong. Please try again.';

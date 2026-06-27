@@ -53,7 +53,11 @@ class _WaitlistInputState extends State<WaitlistInput> {
       // If it succeeds, they are newly added
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context)!.successJoined), backgroundColor: Colors.green),
+          SnackBar(
+            content: Text('${AppLocalizations.of(context)!.successJoined} ($email)'),
+            backgroundColor: Colors.green,
+            duration: const Duration(seconds: 5),
+          ),
         );
         _emailController.clear();
         _phoneController.clear();

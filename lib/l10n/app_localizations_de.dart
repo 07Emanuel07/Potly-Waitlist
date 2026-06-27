@@ -23,7 +23,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get errorAlreadyOnWaitlist =>
-      'Sie stehen bereits auf der Warteliste! 😎';
+      'Du stehst bereits auf der Warteliste! (Tippfehler? Lade die Seite neu, um es erneut zu versuchen) 😎';
 
   @override
   String get errorGeneric =>
