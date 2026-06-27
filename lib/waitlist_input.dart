@@ -1,6 +1,7 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:web/web.dart' as web;
 import 'l10n/app_localizations.dart';
 
 class WaitlistInput extends StatefulWidget {
@@ -31,6 +32,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
     });
 
     try {
+      await FirebaseAppCheck.instance.getToken(true);
       final normalizedEmail = email.toLowerCase();
       final docRef = FirebaseFirestore.instance
           .collection('waitlist_emails')
@@ -70,7 +72,15 @@ class _WaitlistInputState extends State<WaitlistInput> {
       if (e.code == 'permission-denied') {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(AppLocalizations.of(context)!.errorAlreadyOnWaitlist), backgroundColor: Colors.orange),
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.errorAlreadyOnWaitlist),
+              backgroundColor: Colors.orange,
+              duration: const Duration(seconds: 10),
+              action: SnackBarAction(
+                label: 'Reload',
+                onPressed: () => web.window.location.reload(), // Das löst die Blockade sofort!
+              ),
+            ),
           );
         }
       } else {
