@@ -19,7 +19,7 @@ void main() async {
 
   await FirebaseAppCheck.instance.activate(
     providerWeb: ReCaptchaEnterpriseProvider('6LevJyotAAAAAOHs9mncz2DEIcvb8jeLdoVHxjgG'),
-  );
+  ); // Recaptcha
 
 
   runApp(const PotlyWaitlistApp());
