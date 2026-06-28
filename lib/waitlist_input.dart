@@ -32,7 +32,6 @@ class _WaitlistInputState extends State<WaitlistInput> {
     });
 
     try {
-      await FirebaseAppCheck.instance.getToken(true);
       final normalizedEmail = email.toLowerCase();
       final docRef = FirebaseFirestore.instance
           .collection('waitlist_emails')

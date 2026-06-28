@@ -53,7 +53,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAXY1f4GNJ-4VIC682BBqxw-Q1K7GjntmA',
+    apiKey: 'AIzaSyAzFnGRSBKHH5vQYuGWMCIXFi4PviXPjfY',
     appId: '1:816746522799:web:e8e0dab5f01aaf4cc00c5a',
     messagingSenderId: '816746522799',
     projectId: 'potly-waitlist',
