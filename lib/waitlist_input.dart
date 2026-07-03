@@ -49,7 +49,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
       }
       // --- LÜGENDETEKTOR START ---
       try {
-        final tokenStr = await FirebaseAppCheck.instance.getToken();
+        final tokenStr = await FirebaseAppCheck.instance.getToken(true);
         print('🕵️‍♂️ LÜGENDETEKTOR TOKEN: $tokenStr');
         if (tokenStr == null) {
           print('🚨 ALARM: Flutter hat KEIN App Check Token gefunden!');
