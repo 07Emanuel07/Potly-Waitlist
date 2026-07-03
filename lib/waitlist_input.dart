@@ -47,6 +47,22 @@ class _WaitlistInputState extends State<WaitlistInput> {
       if (phone.isNotEmpty) {
         dataToSave['phone'] = phone;
       }
+      // --- LÜGENDETEKTOR START ---
+      try {
+        final tokenStr = await FirebaseAppCheck.instance.getToken();
+        print('🕵️‍♂️ LÜGENDETEKTOR TOKEN: $tokenStr');
+        if (tokenStr == null) {
+          print('🚨 ALARM: Flutter hat KEIN App Check Token gefunden!');
+        } else {
+          print('✅ ERFOLG: Token ist da. Es wird an Firestore gesendet.');
+        }
+      } catch (e) {
+        print('🚨 ALARM: Fehler beim Holen des Tokens: $e');
+      }
+      // --- LÜGENDETEKTOR ENDE ---
+
+      // Try to create the document
+      await docRef.set(dataToSave);
 
       // Try to create the document
       await docRef.set(dataToSave);
