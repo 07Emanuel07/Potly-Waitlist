@@ -59,7 +59,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
       } catch (e) {
         print('🚨 ALARM: Fehler beim Holen des Tokens: $e');
       }
-      // --- LÜGENDETEKTOR ENDE ---
+      // --- LÜGENDETEKTOR ENDE j ---
 
       // Try to create the document
       await docRef.set(dataToSave);
