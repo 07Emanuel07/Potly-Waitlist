@@ -48,7 +48,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
         dataToSave['phone'] = phone;
       }
       // --- LÜGENDETEKTOR START ---
-      try {
+     /* try {
         final tokenStr = await FirebaseAppCheck.instance.getToken(true);
         print('🕵️‍♂️ LÜGENDETEKTOR TOKEN: $tokenStr');
         if (tokenStr == null) {
@@ -58,7 +58,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
         }
       } catch (e) {
         print('🚨 ALARM: Fehler beim Holen des Tokens: $e');
-      }
+      } */
       // --- LÜGENDETEKTOR ENDE j ---
 
       // Try to create the document
