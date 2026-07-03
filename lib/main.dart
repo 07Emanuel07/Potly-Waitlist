@@ -17,7 +17,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-   FirebaseAppCheck.instance.activate(
+  await FirebaseAppCheck.instance.activate(
     providerWeb: ReCaptchaEnterpriseProvider('6LevJyotAAAAAOHs9mncz2DEIcvb8jeLdoVHxjgG'),
   ); // Recaptcha
 
