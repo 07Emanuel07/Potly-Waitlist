@@ -2,17 +2,19 @@ from firebase_functions import https_fn
 from firebase_admin import initialize_app, firestore
 import typing
 
-# 1. Create a global variable for the database, but DON'T initialize it yet.
+# 1. Initialize the app GLOBALLY.
+# The App Check middleware needs this to verify the token before the function runs!
+initialize_app()
+
 db = None
 
 @https_fn.on_call(enforce_app_check=True)
 def join_waitlist(req: https_fn.CallableRequest) -> typing.Any:
     global db
 
-    # 2. "Lazy load" the database only when the function is actually called
-    # This prevents the local Firebase CLI from crashing during deployment!
+    # 2. "Lazy load" ONLY the Firestore connection.
+    # This prevents the local Firebase CLI from crashing during deployment.
     if db is None:
-        initialize_app()
         db = firestore.client()
 
     # 3. Extract and sanitize data
