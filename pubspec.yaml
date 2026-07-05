@@ -43,6 +43,7 @@ dependencies:
   firebase_app_check: ^0.4.5
   flutter_localization: ^0.4.0
   web: ^1.1.1
+  cloud_functions: ^6.3.3
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,7 +19,7 @@ class _WaitlistInputState extends State<WaitlistInput> {
 
   Future<void> _joinWaitlist() async {
     final email = _emailController.text.trim();
-    final phone = _phoneController.text.trim(); // Capture phone text
+    final phone = _phoneController.text.trim();
 
     if (email.isEmpty || !email.contains('@') || !email.contains('.')) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -32,38 +33,14 @@ class _WaitlistInputState extends State<WaitlistInput> {
     });
 
     try {
-      final normalizedEmail = email.toLowerCase();
-      final docRef = FirebaseFirestore.instance
-          .collection('waitlist_emails')
-          .doc(normalizedEmail);
+      // Call the Python Cloud Function
+      final functions = FirebaseFunctions.instance;
+      await functions.httpsCallable('join_waitlist').call({
+        'email': email,
+        'phone': phone,
+      });
 
-      // REMOVED: await docRef.get() check
-
-      Map<String, dynamic> dataToSave = {
-        'email': normalizedEmail,
-        'timestamp': FieldValue.serverTimestamp(),
-      };
-
-      if (phone.isNotEmpty) {
-        dataToSave['phone'] = phone;
-      }
-      // --- LÜGENDETEKTOR START ---
-     /* try {
-        final tokenStr = await FirebaseAppCheck.instance.getToken(true);
-        print('🕵️‍♂️ LÜGENDETEKTOR TOKEN: $tokenStr');
-        if (tokenStr == null) {
-          print('🚨 ALARM: Flutter hat KEIN App Check Token gefunden!');
-        } else {
-          print('✅ ERFOLG: Token ist da. Es wird an Firestore gesendet.');
-        }
-      } catch (e) {
-        print('🚨 ALARM: Fehler beim Holen des Tokens: $e');
-      } */
-      // --- LÜGENDETEKTOR ENDE j ---
-      // Try to create the document
-      await docRef.set(dataToSave);
-
-      // If it succeeds, they are newly added
+      // If it succeeds:
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -76,35 +53,32 @@ class _WaitlistInputState extends State<WaitlistInput> {
         _phoneController.clear();
       }
 
-    } on FirebaseException catch (e) {
-      print('🔥 FIREBASE ERROR CODE: ${e.code}');
-      print('🔥 FIREBASE ERROR MESSAGE: ${e.message}');
-      // Catch the permission-denied error triggered by our rules
-      if (e.code == 'permission-denied') {
-        if (mounted) {
+    } on FirebaseFunctionsException catch (e) {
+      print('🔥 FUNCTION ERROR: ${e.code} - ${e.message}');
+
+      if (mounted) {
+        // Handle "Already Exists" error thrown by Python
+        if (e.code == 'already-exists') {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(AppLocalizations.of(context)!.errorAlreadyOnWaitlist),
               backgroundColor: Colors.orange,
-              duration: const Duration(seconds: 10),
-              action: SnackBarAction(
-                label: 'Reload',
-                onPressed: () => web.window.location.reload(), // Das löst die Blockade sofort!
-              ),
+              duration: const Duration(seconds: 5),
             ),
           );
-        }
-      } else {
-        // Handle other Firebase errors
-        if (mounted) {
+        } else {
+          // Handle invalid arguments or internal errors
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(AppLocalizations.of(context)!.errorGeneric), backgroundColor: Colors.red),
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.errorGeneric),
+              backgroundColor: Colors.red,
+            ),
           );
         }
       }
     } catch (e) {
+      print('Unknown error: $e');
       if (mounted) {
-        print('Error joining waitlist: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppLocalizations.of(context)!.errorGeneric),
