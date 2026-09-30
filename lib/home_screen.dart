@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
       alignment: isDesktop ? WrapAlignment.start : WrapAlignment.center,
       children: [
         ElevatedButton.icon(
-          onPressed: () => launchUrl(Uri.parse('YOUR_APP_STORE_LINK_HERE')),
+          onPressed: () => launchUrl(Uri.parse('https://apps.apple.com/us/app/potly-saving-circles/id6757607738')),
           icon: const Icon(Icons.apple, color: Colors.white),
           label: const Text('App Store', style: TextStyle(color: Colors.white)),
           style: ElevatedButton.styleFrom(
@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         ElevatedButton.icon(
-          onPressed: () => launchUrl(Uri.parse('YOUR_PLAY_STORE_LINK_HERE')),
+          onPressed: () => launchUrl(Uri.parse('https://play.google.com/store/apps/details?id=emanuel.seifegebreal.equb')),
           icon: const Icon(Icons.android, color: Colors.white),
           label: const Text('Google Play', style: TextStyle(color: Colors.white)),
           style: ElevatedButton.styleFrom(
