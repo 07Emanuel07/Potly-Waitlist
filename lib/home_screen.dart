@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:waiting_list/waitlist_input.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'l10n/app_localizations.dart';
 import 'main.dart';
 
@@ -92,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
                 child: Text(
-                  AppLocalizations.of(context)!.joinWaitlist,
+                  AppLocalizations.of(context)!.downloadApp,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: isDesktop ? 16 : 12),
                 ),
               ),
@@ -107,12 +106,49 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildHeroSection(context, isDesktop),
             const SizedBox(height: 80),
             _buildFeaturesSection(context, isDesktop),
-            const SizedBox(height: 80),
+            const SizedBox(height: 40),
+            _buildFAQSection(context, isDesktop),
+            const SizedBox(height: 40),
             _buildFAQAndFooter(context, isDesktop),
             const SizedBox(height: 40),
           ],
         ),
       ),
+    );
+  }
+  Widget _buildDownloadButtons(BuildContext context, bool isDesktop) {
+    return Wrap(
+      spacing: 16,
+      runSpacing: 16,
+      alignment: isDesktop ? WrapAlignment.start : WrapAlignment.center,
+      children: [
+        ElevatedButton.icon(
+          onPressed: () => launchUrl(Uri.parse('YOUR_APP_STORE_LINK_HERE')),
+          icon: const Icon(Icons.apple, color: Colors.white),
+          label: const Text('App Store', style: TextStyle(color: Colors.white)),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: const BorderSide(color: Colors.white24),
+            ),
+          ),
+        ),
+        ElevatedButton.icon(
+          onPressed: () => launchUrl(Uri.parse('YOUR_PLAY_STORE_LINK_HERE')),
+          icon: const Icon(Icons.android, color: Colors.white),
+          label: const Text('Google Play', style: TextStyle(color: Colors.white)),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: const BorderSide(color: Colors.white24),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -140,10 +176,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         const SizedBox(height: 40),
-        const WaitlistInput(),
+        _buildDownloadButtons(context, isDesktop),
         const SizedBox(height: 15),
         Text(
-          AppLocalizations.of(context)!.waitlistOffer,
+          AppLocalizations.of(context)!.downloadOffer,
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: const TextStyle(fontSize: 14, color: Colors.white70, fontStyle: FontStyle.italic),
         ),
@@ -330,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 30),
           SizedBox(
             width: isDesktop ? 500 : double.infinity,
-            child: const WaitlistInput(),
+            child: _buildDownloadButtons(context, false),
           ),
           const SizedBox(height: 40),
           const Text(
@@ -341,5 +377,66 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  Widget _buildFAQSection(BuildContext context, bool isDesktop) {
+    final faqs = [
+      {'q': AppLocalizations.of(context)!.faq1Q, 'a': AppLocalizations.of(context)!.faq1A},
+      {'q': AppLocalizations.of(context)!.faq2Q, 'a': AppLocalizations.of(context)!.faq2A},
+      {'q': AppLocalizations.of(context)!.faq3Q, 'a': AppLocalizations.of(context)!.faq3A},
+      {'q': AppLocalizations.of(context)!.faq4Q, 'a': AppLocalizations.of(context)!.faq4A},
+      {'q': AppLocalizations.of(context)!.faq5Q, 'a': AppLocalizations.of(context)!.faq5A},
+    ];
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: isDesktop ? 100 : 20, vertical: 40),
+      constraints: BoxConstraints(maxWidth: isDesktop ? 800 : double.infinity),
+      child: Column(
+        children: [
+          Text(
+            AppLocalizations.of(context)!.faqTitle,
+            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 40),
+          ...faqs.map((faq) => Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Theme(
+              // Removes the default borders Flutter adds to ExpansionTiles
+              data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                collapsedBackgroundColor: Colors.white.withValues(alpha: 0.05),
+                backgroundColor: Colors.white.withValues(alpha: 0.05),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  side: const BorderSide(color: Colors.white24),
+                ),
+                collapsedShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  side: const BorderSide(color: Colors.white24),
+                ),
+                iconColor: Theme.of(context).primaryColor,
+                collapsedIconColor: Colors.white70,
+                title: Text(
+                  faq['q']!,
+                  style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16),
+                ),
+                childrenPadding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      faq['a']!,
+                      style: const TextStyle(color: Colors.white70, height: 1.5, fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )),
+        ],
+      ),
+    );
+  }
+
 }
 

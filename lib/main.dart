@@ -1,27 +1,12 @@
-import 'package:firebase_app_check/firebase_app_check.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';
+
 import 'home_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 
-
-void main() async {
-  // Ensure Flutter bindings are initialized before Firebase
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize Firebase for the web
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  await FirebaseAppCheck.instance.activate(
-    providerWeb: ReCaptchaEnterpriseProvider('6LevJyotAAAAAOHs9mncz2DEIcvb8jeLdoVHxjgG'),
-  ); // Recaptcha.
-
-
+// Transform my Website from a Waitlist Website to a Landing Page
+void main() {
   runApp(const PotlyWaitlistApp());
 }
 

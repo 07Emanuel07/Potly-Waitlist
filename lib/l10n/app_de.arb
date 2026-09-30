@@ -1,14 +1,8 @@
 {
-  "joinWaitlist": "Warteliste beitreten",
-  "emailHint": "Geben Sie Ihre E-Mail-Adresse ein",
-  "errorInvalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-    "errorAlreadyOnWaitlist": "Du stehst bereits auf der Warteliste! (Vertippt? Versuch es einfach später erneut) 😎",
-    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
-    "successJoined": "Erfolg! Sie sind auf der Liste. 🎉",
-"phoneHint": "Telefonnummer (optional)",
+  "downloadApp": "App herunterladen",
   "heroTitle": "GRUPPENSPAREN,\nGELÖST.",
   "heroSubtitle": "Vergessen Sie unübersichtliche WhatsApp-Chats.\nErhalten Sie klare, automatisierte Auszahlungen.",
-  "waitlistOffer": "🎉 Melden Sie sich noch heute für die Warteliste an und erhalten Sie Ihren ersten Sparzyklus völlig kostenlos.",
+  "downloadOffer": "  Lade Potly noch heute herunter und erhalte deinen ersten Sparzyklus völlig kostenlos.",
   "feature1Title": "Eine einzige Quelle der Wahrheit",
   "feature1Desc": "Schluss mit dem Chat-Chaos. Potly fungiert als digitales Kontobuch Ihrer Gruppe und macht die Verfolgung von Beiträgen für alle mühelos und transparent.",
   "feature2Title": "Wir übernehmen die Mathematik",
@@ -18,5 +12,17 @@
   "feature4Title": "Auf Vertrauen gebaut",
   "feature4Desc": "Strenge digitale Regeln halten Ihren Sparzirkel sicher. Fristen sind endgültig, und automatische Suspendierungen sorgen für Fairness für alle Beteiligten.",
   "footerTitle": "Sichern Sie sich Ihren kostenlosen Zyklus & Platz.",
-  "footerDesc": "Ihr erster Zyklus ist völlig kostenlos. Danach kostet Potly nur 0,99 €/Monat oder 9,99 €/Jahr.\nDer Preis einer Kugel Eis für die finanzielle Sicherheit Ihrer Gruppe."
+  "footerDesc": "Ihr erster Zyklus ist völlig kostenlos. Danach kostet Potly nur 0,99 €/Monat oder 9,99 €/Jahr.\nDer Preis einer Kugel Eis für die finanzielle Sicherheit Ihrer Gruppe.",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faq1Q": "Wie viele Personen brauche ich, um einen Zyklus zu starten?",
+  "faq1A": "Du brauchst mindestens 3 Mitglieder, um ein Potly-Zyklus zu starten.",
+  "faq2Q": "Was passiert, wenn jemand nicht bezahlt?",
+  "faq2A": "Potly basiert auf strengen digitalen Regeln. Fristen sind bindend; wer eine Zahlung verpasst, wird automatisch suspendiert und kann das Geld nicht gewinnen, bis die Schulden beglichen sind.",
+  "faq3Q": "Wie rotieren die Auszahlungen?",
+  "faq3A": "In jedem Zyklus zahlen alle Mitglieder einen vereinbarten Betrag ein. In jeder Runde erhält ein Mitglied die gesamte Auszahlung, bis jeder an der Reihe war.",
+  "faq4Q": "Bezahle ich direkt in der App?",
+  "faq4A": "Nein, Potly verarbeitet oder hält kein Geld. Du und deine Gruppe entscheidet über den integrierten Gruppen-Chat, wie das Geld überwiesen wird (z.B. Bargeld, PayPal oder Banküberweisung). Potly führt lediglich das digitale Kassenbuch und setzt die Regeln durch.",
+  "faq5Q": "Ist Potly kostenlos?",
+  "faq5A": "Deine allererste Potly-Gruppe und dein erster voller Sparzyklus sind völlig kostenlos. Danach kostet Potly nur 0,99 €/Monat oder 9,99 €/Jahr."
+
 }

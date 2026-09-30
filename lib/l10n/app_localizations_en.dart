@@ -9,37 +9,18 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get joinWaitlist => 'Join Waitlist';
+  String get downloadApp => 'Download App';
 
   @override
   String get heroTitle => 'GROUP SAVINGS,\nSOLVED.';
-
-  @override
-  String get emailHint => 'Enter your email address';
-
-  @override
-  String get errorInvalidEmail => 'Please enter a valid email address.';
-
-  @override
-  String get errorAlreadyOnWaitlist =>
-      'You\'re already on the waitlist! (Made a typo? Just try again later) 😎';
-
-  @override
-  String get errorGeneric => 'Something went wrong. Please try again.';
-
-  @override
-  String get successJoined => 'Success! You are on the list. 🎉';
-
-  @override
-  String get phoneHint => 'Phone number (optional)';
 
   @override
   String get heroSubtitle =>
       'Ditch messy WhatsApp chats.\nGet clear automated payouts.';
 
   @override
-  String get waitlistOffer =>
-      '🎉 Join the waitlist today and get your first full savings cycle entirely free.';
+  String get downloadOffer =>
+      '  Download Potly today and get your first full savings cycle entirely free.';
 
   @override
   String get feature1Title => 'A Single Source of Truth';
@@ -75,4 +56,42 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get footerDesc =>
       'Your first cycle is completely free. After that, Potly costs just €0,99/month or €9,99/year.\nThe price of a scoop of ice cream to secure your group\'s financial peace of mind.';
+
+  @override
+  String get faqTitle => 'Frequently Asked Questions';
+
+  @override
+  String get faq1Q => 'How many people do I need to start a circle?';
+
+  @override
+  String get faq1A =>
+      'You need a minimum of 3 members to start a Potly Circle.';
+
+  @override
+  String get faq2Q => 'What happens if someone fails to pay?';
+
+  @override
+  String get faq2A =>
+      'Potly runs on a strict digital contract. Deadlines are final; if someone misses a payment, they are automatically suspended and cannot win the pot until debts are cleared.';
+
+  @override
+  String get faq3Q => 'How do payouts rotate?';
+
+  @override
+  String get faq3A =>
+      'In every cycle, all members contribute an agreed amount. One member receives the pooled payout each round until everyone has taken their turn.';
+
+  @override
+  String get faq4Q => 'Do I pay directly in the app?';
+
+  @override
+  String get faq4A =>
+      'No, Potly does not hold or process your money. You and your group decide how to transfer funds (e.g., Cash, PayPal, or Bank Transfer) using the built-in Group Chat. Potly acts as your digital ledger to track payments and enforce the rules.';
+
+  @override
+  String get faq5Q => 'Is Potly free to use?';
+
+  @override
+  String get faq5A =>
+      'Your very first Potly Group & your first full savings cycle are completely free. After that, Potly costs just €0.99/month or €9.99/year.';
 }

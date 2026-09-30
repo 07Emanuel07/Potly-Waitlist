@@ -98,11 +98,11 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @joinWaitlist.
+  /// No description provided for @downloadApp.
   ///
   /// In en, this message translates to:
-  /// **'Join Waitlist'**
-  String get joinWaitlist;
+  /// **'Download App'**
+  String get downloadApp;
 
   /// No description provided for @heroTitle.
   ///
@@ -110,53 +110,17 @@ abstract class AppLocalizations {
   /// **'GROUP SAVINGS,\nSOLVED.'**
   String get heroTitle;
 
-  /// No description provided for @emailHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your email address'**
-  String get emailHint;
-
-  /// No description provided for @errorInvalidEmail.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter a valid email address.'**
-  String get errorInvalidEmail;
-
-  /// No description provided for @errorAlreadyOnWaitlist.
-  ///
-  /// In en, this message translates to:
-  /// **'You\'re already on the waitlist! (Made a typo? Just try again later) 😎'**
-  String get errorAlreadyOnWaitlist;
-
-  /// No description provided for @errorGeneric.
-  ///
-  /// In en, this message translates to:
-  /// **'Something went wrong. Please try again.'**
-  String get errorGeneric;
-
-  /// No description provided for @successJoined.
-  ///
-  /// In en, this message translates to:
-  /// **'Success! You are on the list. 🎉'**
-  String get successJoined;
-
-  /// No description provided for @phoneHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Phone number (optional)'**
-  String get phoneHint;
-
   /// No description provided for @heroSubtitle.
   ///
   /// In en, this message translates to:
   /// **'Ditch messy WhatsApp chats.\nGet clear automated payouts.'**
   String get heroSubtitle;
 
-  /// No description provided for @waitlistOffer.
+  /// No description provided for @downloadOffer.
   ///
   /// In en, this message translates to:
-  /// **'🎉 Join the waitlist today and get your first full savings cycle entirely free.'**
-  String get waitlistOffer;
+  /// **'  Download Potly today and get your first full savings cycle entirely free.'**
+  String get downloadOffer;
 
   /// No description provided for @feature1Title.
   ///
@@ -217,6 +181,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your first cycle is completely free. After that, Potly costs just €0,99/month or €9,99/year.\nThe price of a scoop of ice cream to secure your group\'s financial peace of mind.'**
   String get footerDesc;
+
+  /// No description provided for @faqTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequently Asked Questions'**
+  String get faqTitle;
+
+  /// No description provided for @faq1Q.
+  ///
+  /// In en, this message translates to:
+  /// **'How many people do I need to start a circle?'**
+  String get faq1Q;
+
+  /// No description provided for @faq1A.
+  ///
+  /// In en, this message translates to:
+  /// **'You need a minimum of 3 members to start a Potly Circle.'**
+  String get faq1A;
+
+  /// No description provided for @faq2Q.
+  ///
+  /// In en, this message translates to:
+  /// **'What happens if someone fails to pay?'**
+  String get faq2Q;
+
+  /// No description provided for @faq2A.
+  ///
+  /// In en, this message translates to:
+  /// **'Potly runs on a strict digital contract. Deadlines are final; if someone misses a payment, they are automatically suspended and cannot win the pot until debts are cleared.'**
+  String get faq2A;
+
+  /// No description provided for @faq3Q.
+  ///
+  /// In en, this message translates to:
+  /// **'How do payouts rotate?'**
+  String get faq3Q;
+
+  /// No description provided for @faq3A.
+  ///
+  /// In en, this message translates to:
+  /// **'In every cycle, all members contribute an agreed amount. One member receives the pooled payout each round until everyone has taken their turn.'**
+  String get faq3A;
+
+  /// No description provided for @faq4Q.
+  ///
+  /// In en, this message translates to:
+  /// **'Do I pay directly in the app?'**
+  String get faq4Q;
+
+  /// No description provided for @faq4A.
+  ///
+  /// In en, this message translates to:
+  /// **'No, Potly does not hold or process your money. You and your group decide how to transfer funds (e.g., Cash, PayPal, or Bank Transfer) using the built-in Group Chat. Potly acts as your digital ledger to track payments and enforce the rules.'**
+  String get faq4A;
+
+  /// No description provided for @faq5Q.
+  ///
+  /// In en, this message translates to:
+  /// **'Is Potly free to use?'**
+  String get faq5Q;
+
+  /// No description provided for @faq5A.
+  ///
+  /// In en, this message translates to:
+  /// **'Your very first Potly Group & your first full savings cycle are completely free. After that, Potly costs just €0.99/month or €9.99/year.'**
+  String get faq5A;
 }
 
 class _AppLocalizationsDelegate

@@ -1,13 +1,8 @@
 {
-  "joinWaitlist": "Join Waitlist","heroTitle": "GROUP SAVINGS,\nSOLVED.",
-  "emailHint": "Enter your email address",
-   "errorInvalidEmail": "Please enter a valid email address.",
-    "errorAlreadyOnWaitlist": "You're already on the waitlist! (Made a typo? Just try again later) 😎",
-    "errorGeneric": "Something went wrong. Please try again.",
-    "successJoined": "Success! You are on the list. 🎉",
-    "phoneHint": "Phone number (optional)",
+   "downloadApp": "Download App",
+  "heroTitle": "GROUP SAVINGS,\nSOLVED.",
   "heroSubtitle": "Ditch messy WhatsApp chats.\nGet clear automated payouts.",
-  "waitlistOffer": "🎉 Join the waitlist today and get your first full savings cycle entirely free.",
+  "downloadOffer": "  Download Potly today and get your first full savings cycle entirely free.",
   "feature1Title": "A Single Source of Truth",
   "feature1Desc": "Ditch the messy chats. Potly acts as your group's digital ledger, making tracking contributions effortless and transparent for everyone.",
   "feature2Title": "The Math is on Us",
@@ -17,5 +12,17 @@
   "feature4Title": "Built on Trust",
   "feature4Desc": "Strict digital rules keep your savings circle safe. Deadlines are final, and automatic suspensions ensure fair play for everyone involved.",
   "footerTitle": "Claim Your Free Cycle & Secure Your Spot.",
-  "footerDesc": "Your first cycle is completely free. After that, Potly costs just €0,99/month or €9,99/year.\nThe price of a scoop of ice cream to secure your group's financial peace of mind."
+  "footerDesc": "Your first cycle is completely free. After that, Potly costs just €0,99/month or €9,99/year.\nThe price of a scoop of ice cream to secure your group's financial peace of mind.",
+   "faqTitle": "Frequently Asked Questions",
+     "faq1Q": "How many people do I need to start a circle?",
+     "faq1A": "You need a minimum of 3 members to start a Potly Circle.",
+     "faq2Q": "What happens if someone fails to pay?",
+     "faq2A": "Potly runs on a strict digital contract. Deadlines are final; if someone misses a payment, they are automatically suspended and cannot win the pot until debts are cleared.",
+     "faq3Q": "How do payouts rotate?",
+     "faq3A": "In every cycle, all members contribute an agreed amount. One member receives the pooled payout each round until everyone has taken their turn.",
+     "faq4Q": "Do I pay directly in the app?",
+     "faq4A": "No, Potly does not hold or process your money. You and your group decide how to transfer funds (e.g., Cash, PayPal, or Bank Transfer) using the built-in Group Chat. Potly acts as your digital ledger to track payments and enforce the rules.",
+     "faq5Q": "Is Potly free to use?",
+     "faq5A": "Your very first Potly Group & your first full savings cycle are completely free. After that, Potly costs just €0.99/month or €9.99/year."
+
 }

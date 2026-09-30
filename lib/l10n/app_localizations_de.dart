@@ -9,39 +9,18 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get joinWaitlist => 'Warteliste beitreten';
+  String get downloadApp => 'App herunterladen';
 
   @override
   String get heroTitle => 'GRUPPENSPAREN,\nGELÖST.';
-
-  @override
-  String get emailHint => 'Geben Sie Ihre E-Mail-Adresse ein';
-
-  @override
-  String get errorInvalidEmail =>
-      'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-
-  @override
-  String get errorAlreadyOnWaitlist =>
-      'Du stehst bereits auf der Warteliste! (Vertippt? Versuch es einfach später erneut) 😎';
-
-  @override
-  String get errorGeneric =>
-      'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.';
-
-  @override
-  String get successJoined => 'Erfolg! Sie sind auf der Liste. 🎉';
-
-  @override
-  String get phoneHint => 'Telefonnummer (optional)';
 
   @override
   String get heroSubtitle =>
       'Vergessen Sie unübersichtliche WhatsApp-Chats.\nErhalten Sie klare, automatisierte Auszahlungen.';
 
   @override
-  String get waitlistOffer =>
-      '🎉 Melden Sie sich noch heute für die Warteliste an und erhalten Sie Ihren ersten Sparzyklus völlig kostenlos.';
+  String get downloadOffer =>
+      '  Lade Potly noch heute herunter und erhalte deinen ersten Sparzyklus völlig kostenlos.';
 
   @override
   String get feature1Title => 'Eine einzige Quelle der Wahrheit';
@@ -78,4 +57,43 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get footerDesc =>
       'Ihr erster Zyklus ist völlig kostenlos. Danach kostet Potly nur 0,99 €/Monat oder 9,99 €/Jahr.\nDer Preis einer Kugel Eis für die finanzielle Sicherheit Ihrer Gruppe.';
+
+  @override
+  String get faqTitle => 'Häufig gestellte Fragen';
+
+  @override
+  String get faq1Q =>
+      'Wie viele Personen brauche ich, um einen Zyklus zu starten?';
+
+  @override
+  String get faq1A =>
+      'Du brauchst mindestens 3 Mitglieder, um ein Potly-Zyklus zu starten.';
+
+  @override
+  String get faq2Q => 'Was passiert, wenn jemand nicht bezahlt?';
+
+  @override
+  String get faq2A =>
+      'Potly basiert auf strengen digitalen Regeln. Fristen sind bindend; wer eine Zahlung verpasst, wird automatisch suspendiert und kann das Geld nicht gewinnen, bis die Schulden beglichen sind.';
+
+  @override
+  String get faq3Q => 'Wie rotieren die Auszahlungen?';
+
+  @override
+  String get faq3A =>
+      'In jedem Zyklus zahlen alle Mitglieder einen vereinbarten Betrag ein. In jeder Runde erhält ein Mitglied die gesamte Auszahlung, bis jeder an der Reihe war.';
+
+  @override
+  String get faq4Q => 'Bezahle ich direkt in der App?';
+
+  @override
+  String get faq4A =>
+      'Nein, Potly verarbeitet oder hält kein Geld. Du und deine Gruppe entscheidet über den integrierten Gruppen-Chat, wie das Geld überwiesen wird (z.B. Bargeld, PayPal oder Banküberweisung). Potly führt lediglich das digitale Kassenbuch und setzt die Regeln durch.';
+
+  @override
+  String get faq5Q => 'Ist Potly kostenlos?';
+
+  @override
+  String get faq5A =>
+      'Deine allererste Potly-Gruppe und dein erster voller Sparzyklus sind völlig kostenlos. Danach kostet Potly nur 0,99 €/Monat oder 9,99 €/Jahr.';
 }
