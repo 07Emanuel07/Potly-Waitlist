@@ -69208,10 +69208,10 @@ $0(){var s=this.a.l7(t.b4)
 return s==null?null:s.nu(B.tw)},
 $S:0}
 A.acp.prototype={
-$0(){return A.ahf(A.f3("YOUR_APP_STORE_LINK_HERE",0,null))},
+$0(){return A.ahf(A.f3("https://apps.apple.com/us/app/potly-saving-circles/id6757607738",0,null))},
 $S:0}
 A.acq.prototype={
-$0(){return A.ahf(A.f3("YOUR_PLAY_STORE_LINK_HERE",0,null))},
+$0(){return A.ahf(A.f3("https://play.google.com/store/apps/details?id=emanuel.seifegebreal.equb",0,null))},
 $S:0}
 A.act.prototype={
 $3(a,b,c){var s=null
